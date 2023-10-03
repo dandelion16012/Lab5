@@ -41,7 +41,9 @@ class MyDictionary<TKey, TValue>
             if (keys[i].Equals(x))
             {
                 values[i] = y;
+                keys[i] = x;
                 _values[i] = values[i];
+                _keys[i] = keys[i];
                 ad = true;
             }
             else
@@ -53,8 +55,8 @@ class MyDictionary<TKey, TValue>
 
         if (!ad)
         {
-            _keys[_keys.Length] = x;
-            _values[_values.Length] = y;
+            _keys[_keys.Length-1] = x;
+            _values[_values.Length-1] = y;
             n++;
         }
         keys = _keys;
@@ -104,8 +106,15 @@ class Program
         MyDictionary<int, int> md = new MyDictionary<int, int>();
         md.Add(7, 2);
         md.Add(5, 11);
+        Console.WriteLine("добавлено 2 элемента\n");
         md.print();
         md.Add(7, 8);
+        md.print();
+        md.Add(3, 89);
+        md.print();
+        md.Add(6, 9);
+        md.print();
+        md.Add(6, 7);
         md.print();
 
     }
